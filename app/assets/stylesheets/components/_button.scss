@@ -2,10 +2,39 @@
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   padding: 1rem;
-  color: #ba46ba;
+
   font-weight: 700;
   border-radius: 0.8rem;
   outline: none;
-  border: 1px solid #ba46ba;
+  border: 1px solid $dark_turqoise;
   background-color: transparent;
+  animation: anim 1s 1s backwards;
+  opacity: 0.9;
+}
+
+.heading button a {
+  text-decoration: none;
+  color: $dark_turqoise;
+}
+
+.heading button:hover {
+  background: linear-gradient(to left, $light_turquoise, $dark_turqoise);
+}
+
+.heading button:hover a {
+  color: #fff;
+}
+
+.heading button:active {
+  transform: translateY(0.2rem);
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

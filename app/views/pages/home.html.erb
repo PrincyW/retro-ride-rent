@@ -2,9 +2,12 @@
   <div class="heading">
      <h1>"Revive the Glamour of the Past" </h1>
      <p>"<span>Experience the timeless elegance and sophistication of a bygone era.</span> Rent a piece of history today and embark on a journey through time behind the wheel of a meticulously preserved vintage automobile. Whether it's for a special occasion, a memorable road trip, or simply to indulge in the nostalgia of classic motoring, our collection of vintage cars awaits you. Step back in time and make memories that will last a lifetime with our vintage car rental service."</p>
-     <button>Car collection</button>
+     <button> <%= link_to "See our cars", cars_path %> </button>
   </div>
   <div class="photo-container">
-    <%= image_tag "homepage_car", alt: "Photo of vintage car" %>
+    <%= image_tag "homepage_car", alt: "Photo of vintage car", class: "image image-one" %>
+    <%= image_tag "blue_cabrio", alt: "Photo of vintage car", class: "image image-two" %>
+    <%= image_tag "vintage_porsche", alt: "Photo of vintage car", class: "image image-three" %>
+    <%= image_tag "orange_car_rome", alt: "Photo of vintage car", class: "image image-four" %>
   </div>
 </div>
