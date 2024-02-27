@@ -1,4 +1,4 @@
-.heading button {
+.heading button, .car-button {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   padding: 1rem;
@@ -12,20 +12,20 @@
   opacity: 0.9;
 }
 
-.heading button a {
+.heading button a, .car-button a {
   text-decoration: none;
   color: $dark_turqoise;
 }
 
-.heading button:hover {
+.heading button:hover, .car-button:hover {
   background: linear-gradient(to left, $light_turquoise, $dark_turqoise);
 }
 
-.heading button:hover a {
+.heading button:hover a, .car-button:hover a {
   color: #fff;
 }
 
-.heading button:active {
+.heading button:active, .car-button:active {
   transform: translateY(0.2rem);
 }
 
@@ -37,4 +37,8 @@
   100% {
     opacity: 1;
   }
+}
+
+.car-button {
+  margin-top: 1rem;
 }
