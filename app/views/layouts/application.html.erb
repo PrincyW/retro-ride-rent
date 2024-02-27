@@ -15,11 +15,13 @@
     <%= render "shared/navbar" %>
     <div class="container">
       <%= yield %>
+
     </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%# <%= f.select :species, Pet::SPECIES %>
     <%= render "shared/flashes" %>
+    <%= render "shared/footer" %>
   </body>
 </html>
