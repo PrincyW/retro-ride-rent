@@ -5,4 +5,8 @@ class DashboardsController < ApplicationController
     @user = current_user
     @cars = @user.cars
   end
+
+  def dashboard
+    @car = Car.new
+  end
 end

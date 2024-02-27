@@ -18,26 +18,24 @@
 <% else %>
   <p>You don't have any cars yet.</p>
 <% end %>
-<a href="#" data-action="click->dashboard#toggleForm" class="btn btn-primary">Add a car</a>
 
-<!-- Add New Car Form (Initially Hidden) -->
-<div data-controller="dashboard" data-action="click->dashboard#toggleForm" style="display: none;">
-  <%= form_with(model: Car.new, url: cars_path, local: true, id: 'new_car_form') do |form| %>
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Add a car
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Your car informations</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'cars/new', car: @car %>
+      </div>
     </div>
-
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description %>
-    </div>
-
-    <%# <%= f.select :city, Car::CITIES %>
-    <!-- Add more form fields as needed -->
-
-    <div class="actions">
-      <%= form.submit 'Add Car' %>
-    </div>
-  <% end %>
+  </div>
 </div>

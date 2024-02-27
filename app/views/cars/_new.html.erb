@@ -1,0 +1,10 @@
+<div class="container d-flex justify-content-center mx-3">
+  <%= simple_form_for(@car) do |f| %>
+    <%= f.input :brand %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :photo_url %>
+    <%= f.input :city, collection: Car::CITIES, include_blank: 'Select a city' %>
+    <%= f.input :price, input_html: { step: 0.1 } %>
+    <%= f.submit 'Confirm add', class: "btn btn-success" %>
+  <% end %>
+</div>
