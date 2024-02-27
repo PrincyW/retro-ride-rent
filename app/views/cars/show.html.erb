@@ -14,11 +14,19 @@
           <p>
             <strong>Price:</strong> €<%= @car.price.round %> <span class="fs-6">per day</span>
           </p>
+
+
+        <div class="container-button">
           <button class="car-button">
             <%= link_to "Back to cars", cars_path %>
           </button>
 
-        </div>
+           <button class="car-button">
+            <%= link_to "Reserve this car" %>
+
+          </button>
+
+        </div></div>
 </div>
 </div>
 
