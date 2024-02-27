@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>RetroRideRent</title>
+    <%= favicon_link_tag asset_path('logo-retro-ride-rent.png') %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,7 +21,6 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%# <%= f.select :species, Pet::SPECIES %>
     <%= render "shared/flashes" %>
     <%= render "shared/footer" %>
   </body>
