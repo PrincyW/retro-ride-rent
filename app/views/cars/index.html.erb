@@ -1,21 +1,20 @@
 
-<div class="container">
-    <ul class="list-unstyled mt-2">
+<div class="container cards-wrapper">
+    <ul class="list-unstyled mt-4">
         <div class="d-flex flex-wrap">
             <% @cars.each do |car| %>
-            <div class="card mb-3 ms-3 rounded" style="width: 28rem; height: 28rem;">
+            <div class="card mb-3 ms-3 rounded-3" style="width: 20rem; height: 20rem;">
               <div class="card-body d-flex flex-column justify-content-evenly align-items-center">
                     <img src=" <%= car.photo_url  %> " alt="Vintage Car" style="width: 250px; border-radius: 10px;">
                 <li  class="card-title text-center fw-bold mt-3">
                     <%= link_to car.brand, car_path(car), class: "text-decoration-none text-dark fs-3" %>
                 </li>
-                <p class="card-text"><%= car.description %></p>
                 <div class="d-flex justify-content-evenly align-items-center p-2">
-                    <div class="me-5">
+                    <div class="me-3">
                       <p><strong class="me-3">City:</strong><%= car.city %></p>
                     </div>
                     <div class="ms-5">
-                      <p><strong>€<%= car.price %></strong></p>
+                      <p><strong>€<%= car.price.round %></strong></p>
                     </div>
                 </div>
               </div>

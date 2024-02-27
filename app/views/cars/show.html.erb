@@ -1,0 +1,25 @@
+<div class="car-container">
+
+<div class="car-wrapper">
+        <div class="image-container">
+          <img src=" <%= @car.photo_url %> " class="card-img-top" alt="...">
+        </div>
+        <div class="content-container">
+          <h5 class="mt-2"><%= @car.brand %></h5>
+          <strong>Description: </strong>
+          <p><%= @car.description %></p>
+          <p>
+            <strong>City:</strong> <%= @car.city %>
+          </p>
+          <p>
+            <strong>Price:</strong> €<%= @car.price.round %> <span class="fs-6">per day</span>
+          </p>
+          <button class="car-button">
+            <%= link_to "Back to cars", cars_path %>
+          </button>
+
+        </div>
+</div>
+
+
+</div>
