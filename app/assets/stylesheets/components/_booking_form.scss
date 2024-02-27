@@ -1,0 +1,44 @@
+.form-wrapper {
+  margin: 0 auto;
+  width: 500px;
+  padding: 30px 50px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+ }
+
+ .form-wrapper label {
+  font-size: 1rem;
+ }
+
+ .form-wrapper input {
+  padding: 1rem;
+ }
+
+ .form-wrapper input[type=submit] {
+  color: $dark_turqoise;
+  border-radius: 1rem;
+  outline: none;
+  border: 0.1rem solid $dark_turqoise;
+  font-size: 1rem;
+  font-weight: 700;
+  animation: anim 1s 1s backwards;
+ }
+
+ .form-wrapper input[type=submit]:hover {
+  color: #fff;
+  background: linear-gradient(to left, $light_turquoise, $dark_turqoise);
+ }
+
+ .form-wrapper input[type=submit]:hover {
+  transform: translateY(0.2rem);
+ }
+
+ @keyframes anim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
