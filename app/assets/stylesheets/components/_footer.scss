@@ -34,3 +34,8 @@
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
 }
+
+.footer-height {
+  min-height: 85vh;
+  // min-height: calc(100% – 20px);
+}
