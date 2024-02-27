@@ -1,0 +1,43 @@
+<h1>Welcome to Your Dashboard, <%= current_user.username %></h1>
+
+<%= image_tag current_user.avatar_url, alt: 'User Avatar' %>
+
+<h2>My Cars</h2>
+<% if current_user.cars.any? %>
+  <ul>
+    <% current_user.cars.each do |car| %>
+      <li>
+        <%= image_tag car.photo_url, alt: 'Car Image' %>
+        <p><strong><%= car.brand %></strong></p>
+        <p><%= car.description %></p>
+        <p><%= car.city %></p>
+        <p><%= car.price %> €</p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You don't have any cars yet.</p>
+<% end %>
+<a href="#" data-action="click->dashboard#toggleForm" class="btn btn-primary">Add a car</a>
+
+<!-- Add New Car Form (Initially Hidden) -->
+<div data-controller="dashboard" data-action="click->dashboard#toggleForm" style="display: none;">
+  <%= form_with(model: Car.new, url: cars_path, local: true, id: 'new_car_form') do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <%# <%= f.select :city, Car::CITIES %>
+    <!-- Add more form fields as needed -->
+
+    <div class="actions">
+      <%= form.submit 'Add Car' %>
+    </div>
+  <% end %>
+</div>
