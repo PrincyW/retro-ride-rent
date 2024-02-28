@@ -21,5 +21,57 @@ puts "Creation of cars"
 Car.create!(brand: "Mercedes ASL 300", description: "The Mercedes-Benz 300 SL (chassis code W 198) is a two-seat sports car that was produced by Mercedes-Benz from 1954 to 1957 as a gullwinged coupé and from 1957 to 1963 as a roadster.", photo_url: "https://images.unsplash.com/photo-1474015977340-64a93f54a9f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", city: "Lille", price: 200, user: els )
 Car.create!(brand: "Jaguar XK 120", description: "The Jaguar XK120 is a sports car manufactured by Jaguar between 1948 and 1954. It was Jaguar's first sports car since SS 100 production ended in 1939. ", photo_url: "https://auto.cdn-rivamedia.com/photos/annonce/big/jaguar-xk120-xk-120-roadster-135360105.jpg", city: "Lille", price: 250, user: vicky )
 Car.create!(brand: "Jaguar XK 120", description: "The Fiat 500, commonly known as Topolino,[4] is an Italian city car produced and manufactured by Fiat from 1936 to 1955.", photo_url: "https://www.historics.co.uk/media/1591673/ref-75-1950-fiat-topolino-1.jpg?anchor=center&mode=crop&width=1000", city: "Lille", price: 250, user: princy )
+Car.create!(brand: "Ford", description: "The Ford XYZ Bullshit is a two-seat sports car that was produced by Ford from 1954 to 1957 as a gullwinged coupé and from 1957 to 1963 as a roadster.", photo_url: "https://images.unsplash.com/photo-1563137391-0030ae24bc35?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", city: "Lyon", price: 700, user: els )
+Car.create!(brand: "Hakuna Matata", description: " Juste pour flex. Pas d'inspi. ", photo_url: "https://images.unsplash.com/photo-1579211897956-297c1150469a?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", city: "Marseille", price: 520.2, user: vicky )
+Car.create!(brand: "Volkswagen coccinelle", description: "The Volkswagen Beetle — officially Volkswagen Type 1 — is the best-selling automobile of all time, built by the German manufacturer Volkswagen, created for the occasion and whose name means People's Car.", photo_url: "https://images.unsplash.com/photo-1536168483275-f5736f5c844b?q=80&w=2591&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", city: "Paris", price: 440.3, user: princy )
+
+puts "Creation of bookings..."
+Booking.create!(
+  date_begin: Date.today + 1,
+  date_end: Date.today + 3,
+  status: "confirmed",
+  car: princy.cars.first, # Replace with the actual car_id
+  user: els
+)
+
+Booking.create!(
+  date_begin: Date.today + 5,
+  date_end: Date.today + 7,
+  status: "pending",
+  car: vicky.cars.first, # Replace with the actual car_id
+  user: els
+)
+
+Booking.create!(
+  date_begin: Date.today + 2,
+  date_end: Date.today + 4,
+  status: "confirmed",
+  car: princy.cars.first, # Replace with the actual car_id
+  user: vicky
+)
+
+Booking.create!(
+  date_begin: Date.today + 6,
+  date_end: Date.today + 8,
+  status: "pending",
+  car: els.cars.first, # Replace with the actual car_id
+  user: vicky
+)
+
+Booking.create!(
+  date_begin: Date.today + 3,
+  date_end: Date.today + 5,
+  status: "confirmed",
+  car: els.cars.first, # Replace with the actual car_id
+  user: princy
+)
+
+Booking.create!(
+  date_begin: Date.today + 7,
+  date_end: Date.today + 9,
+  status: "pending",
+  car: vicky.cars.first, # Replace with the actual car_id
+  user: princy
+)
 
 puts "End !"
