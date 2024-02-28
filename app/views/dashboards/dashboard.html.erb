@@ -1,24 +1,4 @@
-<h1>Welcome to Your Dashboard, <%= current_user.username %></h1>
-
-<%= image_tag current_user.avatar_url, alt: 'User Avatar' %>
-
-<h2>My Cars</h2>
-<% if current_user.cars.any? %>
-  <ul>
-    <% current_user.cars.each do |car| %>
-      <li>
-        <%= image_tag car.photo_url, alt: 'Car Image' %>
-        <p><strong><%= car.brand %></strong></p>
-        <p><%= car.description %></p>
-        <p><%= car.city %></p>
-        <p><%= car.price %> €</p>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>You don't have any cars yet.</p>
-<% end %>
-
+<h1>Welcome to Your Dashboard, <%= current_user.username.capitalize %></h1>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -37,5 +17,48 @@
         <%= render 'cars/new', car: @car %>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h2>My Cars</h2>
+    <% if current_user.cars.any? %>
+      <ul>
+        <% current_user.cars.each do |car| %>
+          <div class="card my-3", style="width: 20rem;">
+            <%= image_tag car.photo_url, class: 'card-img-top', alt: 'Car Image' %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= car.brand %></strong></h5>
+              <p class="card-text"><%= car.description %></p>
+              <p class="card-text"><%= car.city %></p>
+              <p class="card-text"><%= car.price %> €</p>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You don't have any cars yet.</p>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Your Booked Cars</h2>
+    <% if current_user.bookings.any? %>
+      <ul>
+        <% current_user.bookings.each do |booking| %>
+          <div class="card my-3", style="width: 20rem;">
+            <%= image_tag booking.car.photo_url, alt: 'Booked Car Image' %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= booking.car.brand %></strong></h5>
+              <p class="card-text"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
+              <p class="card-text"><strong>Status:<%= "booking.status (quand on aura défini)" %></strong></p>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You haven't booked any cars yet.</p>
+    <% end %>
   </div>
 </div>
