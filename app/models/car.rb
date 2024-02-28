@@ -7,4 +7,7 @@ class Car < ApplicationRecord
   validates :photo_url, presence: true
   validates :price, presence: true
   validates :city, inclusion: CITIES
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
