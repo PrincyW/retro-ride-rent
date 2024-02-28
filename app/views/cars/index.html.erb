@@ -1,26 +1,44 @@
 
-<div class="cards-wrapper">
-    <ul class="list-unstyled mt-4">
-        <div class="d-flex flex-wrap">
+
+  <div class="row">
+
+    <%# =============================== %>
+    <%# MA PARTIE GAUCHE %>
+    <%# =============================== %>
+
+    <div class="cards-wrapper col-6 ">
+      <div class="d-flex flex-wrap">
+        <div class="row mx-3 ">
             <% @cars.each do |car| %>
-            <div class="card mb-3 ms-3 rounded-3" style="width: 20rem; height: 20rem;">
-              <div class="card-body d-flex flex-column justify-content-evenly align-items-center">
-                    <img src=" <%= car.photo_url  %> " alt="Vintage Car" style="width: 250px; border-radius: 10px;">
-                <li  class="card-title text-center fw-bold mt-3">
-                    <%= link_to car.brand, car_path(car), class: "text-decoration-none text-dark fs-3" %>
-                </li>
-                <div class="d-flex justify-content-evenly align-items-center p-2">
-                    <div class="me-3">
-                      <p><strong class="me-3">City:</strong><%= car.city %></p>
-                    </div>
-                    <div class="ms-5">
-                      <p><strong>€<%= car.price.round %></strong></p>
-                    </div>
+              <div class="card mb-3 rounded-3 ms-2 me-2" style="width: 20rem; height: 20rem;">
+                <div class="card-body d-flex flex-column justify-content-evenly align-items-center">
+                      <img src=" <%= car.photo_url  %> " alt="Vintage Car" style="width: 250px; border-radius: 10px;">
+                      <%= link_to car.brand, car_path(car), class: "text-decoration-none text-dark fs-3" %>
+                  <div class="d-flex justify-content-evenly align-items-center p-2">
+                      <div class="me-3">
+                        <p><strong class="me-3">City:</strong><%= car.city %></p>
+                      </div>
+                      <div class="ms-5">
+                        <p><strong>€<%= car.price.round %></strong></p>
+                      </div>
+                  </div>
                 </div>
               </div>
-          </div>
             <% end %>
           </div>
         </div>
-    </ul>
-</div>
+      </div>
+
+    <%# =============================== %>
+    <%# MA PARTIE DROITE %>
+    <%# =============================== %>
+
+  <div class="col-6"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+
+
+    </div>
+  </div>
