@@ -7,12 +7,13 @@
       <div class="image-container">
           <img src=" <%= @car.photo_url %> " class="card-img-top" alt="...">
       </div>
-      <div class="content-container">
+      <div class="content-container" data-controller="datepicker">
           <h5 class="mt-2"><%= @car.brand %></h5>
           <strong>Description: </strong>
           <p><%= @car.description %></p>
           <p><strong>City:</strong> <%= @car.city %></p>
-          <p><strong>Price:</strong> € <%= @car.price.round %> <span class="fs-6">per day</span></p>
+          <p><strong>Price:</strong> €<span id="flat-price-per-night"  data-datepicker-target="span" ><%= @car.price.round %></span> <span class="fs-6">per day</span></p
+        
           <!-- Button trigger modal -->
             <button type="button" class="link" data-bs-toggle="modal" data-bs-target="#staticBackdrop", style="margin-top: 0.1rem;">
                 Reserve this car
