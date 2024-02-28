@@ -1,35 +1,28 @@
-.heading button,
-.car-button {
+.link {
+  display: inline-block;
   font-family: "Open Sans", sans-serif;
   width: 100%;
   padding: 1rem;
   font-weight: 700;
   border-radius: 0.8rem;
-  outline: none;
   border: 1px solid $dark_turqoise;
   background-color: transparent;
   animation: anim 1s 1s backwards;
   opacity: 0.9;
+  text-decoration: none;
 }
 
-.heading button a,
-.car-button a {
+.link {
   text-decoration: none;
   color: $dark_turqoise;
 }
 
-.heading button:hover,
-.car-button:hover {
+.link:hover {
   background: linear-gradient(to left, $light_turquoise, $dark_turqoise);
-}
-
-.heading button:hover a,
-.car-button:hover a {
   color: #fff;
 }
 
-.heading button:active,
-.car-button:active {
+.link:active {
   transform: translateY(0.2rem);
 }
 
@@ -43,7 +36,7 @@
   }
 }
 
-.car-button {
+.link {
   margin-top: 1rem;
   margin-right: 2rem;
 }
