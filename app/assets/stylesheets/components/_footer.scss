@@ -7,12 +7,17 @@
   height: 100px;
   padding: 0px 50px;
   color: rgba(0, 0, 0, 0.3);
+  margin-top: auto; /* Push footer to the bottom */
+  width: 100%; /* Ensure footer spans the entire width */
+  position: absolute; /* Enable relative positioning */
   bottom: 0;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: $black;
   opacity: 0.7;
@@ -20,13 +25,16 @@
   font-size: 24px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 1;
   transform: scale(1.1);
 }
+
 .footer .fa-heart {
   color: #d23333;
 }
+
 .logo img {
   width: 80px;
 }
