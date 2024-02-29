@@ -21,15 +21,9 @@
   <%# <div class="footer-height"> %>
     <%= render "shared/navbar" %>
 
-
-    <% if current_page?(cars_path)%>
-       <%= yield %>
-    <% else %>
       <main>
         <%= yield %>
       </main>
-    <% end %>
-
 
   <%# </div> %>
 

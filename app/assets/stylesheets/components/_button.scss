@@ -10,19 +10,18 @@
   animation: anim 1s 1s backwards;
   opacity: 0.9;
   text-decoration: none;
-}
-
-.link {
   text-decoration: none;
   color: $dark_turqoise;
+  margin-top: 1rem;
+  margin-right: 2rem;
 }
 
-.link:hover {
+.link:hover, .car-info-btn:hover {
   background: linear-gradient(to left, $light_turquoise, $dark_turqoise);
   color: #fff;
 }
 
-.link:active {
+.link:active, .car-info-btn:active {
   transform: translateY(0.2rem);
 }
 
@@ -36,15 +35,25 @@
   }
 }
 
-.link {
-  margin-top: 1rem;
-  margin-right: 2rem;
-}
-
 .container-button {
   display: flex;
   justify-content: space-between;
-
   align-items: flex-end;
   position: relative;
+}
+
+// Car info button (displaying individual car info) in index page
+
+.car-info-btn {
+  font-family: "Open Sans", sans-serif;
+  width: 60%;
+  padding: 0.5rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  border: 1px solid $dark_turqoise;
+  background-color: transparent;
+  animation: anim 1s 1s backwards;
+  opacity: 0.9;
+  text-decoration: none;
+  color: $dark_turqoise;
 }

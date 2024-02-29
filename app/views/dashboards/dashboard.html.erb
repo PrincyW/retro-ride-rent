@@ -1,9 +1,10 @@
 <h1>Welcome to Your Dashboard, <%= current_user.username.capitalize %></h1>
-
-<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Add a car
+    Add a car
 </button>
+
+
+<%# Modals %>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -27,7 +28,7 @@
       <ul>
         <% current_user.cars.each do |car| %>
           <div class="card my-3", style="width: 20rem;">
-            <%= image_tag car.photo_url, class: 'card-img-top', alt: 'Car Image' %>
+            <%= image_tag car.photo_url, class: 'card-img-top', id: "dashboard-car-img", alt: 'Car Image' %>
             <div class="card-body">
               <h5 class="card-title"><strong><%= car.brand %></strong></h5>
               <p class="card-text"><%= car.description %></p>
@@ -62,3 +63,15 @@
     <% end %>
   </div>
 </div>
+
+<%# End of Modals %>
+
+
+
+
+
+
+
+
+
+<%# **************************** %>
