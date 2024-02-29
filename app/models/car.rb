@@ -1,5 +1,5 @@
 class Car < ApplicationRecord
-  CITIES = ["Paris", "Lyon", "Lille", "Marseille"]
+  CITIES = ["Paris", "Lyon", "Lille", "Marseille", "Toulouse", "Bordeaux", "Montpellier", "Nantes", "Nice", "Limoges", "Toulon", "Strasbourg", "Angers", "Dijon", "Brest", "Amiens"]
   belongs_to :user
   has_many :users, through: :bookings
   has_many :bookings, dependent: :destroy

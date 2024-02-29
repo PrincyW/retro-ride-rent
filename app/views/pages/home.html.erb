@@ -1,23 +1,42 @@
-<div class="homepage-container">
+<div class="homepage-container d-flex justify-content-center align-items-center">
   <div class="heading">
-     <h1>"Revive the Glamour of the Past" </h1>
+     <h1>"Revive the glamour of the past"</h1>
+     <h4><em>Your Journey Begins with Our Classic Wheels!</em></h4>
      <p>"<span>Experience the timeless elegance and sophistication of a bygone era.</span> Rent a piece of history today and embark on a journey through time behind the wheel of a meticulously preserved vintage automobile. Whether it's for a special occasion, a memorable road trip, or simply to indulge in the nostalgia of classic motoring, our collection of vintage cars awaits you. Step back in time and make memories that will last a lifetime with our vintage car rental service."</p>
       <%= link_to "See our cars", cars_path, class: "link" %>
   </div>
-  <div class="photo-container">
+  <div class="photo-container d-flex justify-content-center">
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag "homepage_car.png", class: "d-block w-100", alt: "Photo 1" %>
+      <div class="carousel-inner" id="image-carousel">
+        <div class="carousel-item active ">
+          <%= image_tag "Vintage_car_9.png", class: "d-block", alt: "Photo 1" %>
         </div>
-        <div class="carousel-item">
-          <%= image_tag "blue_cabrio.png", class: "d-block w-100", alt: "Photo 2" %>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_10.png", class: "d-block", alt: "Photo 2" %>
         </div>
-        <div class="carousel-item">
-          <%= image_tag "vintage_porsche.png", class: "d-block w-100", alt: "Photo 3" %>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_4.png", class: "d-block", alt: "Photo 2" %>
         </div>
-        <div class="carousel-item">
-          <%= image_tag "orange_car_rome.png", class: "d-block w-100", alt: "Photo 4" %>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_7.png", class: "d-block", alt: "Photo 3" %>
+        </div>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_6.png", class: "d-block", alt: "Photo 4" %>
+        </div>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_5.png", class: "d-block", alt: "Photo 4" %>
+        </div>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_8.png", class: "d-block", alt: "Photo 4" %>
+        </div>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_2.png", class: "d-block", alt: "Photo 4" %>
+        </div>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_1.png", class: "d-block", alt: "Photo 4" %>
+        </div>
+        <div class="carousel-item ">
+          <%= image_tag "Vintage_car_3.png", class: "d-block", alt: "Photo 4" %>
         </div>
       </div>
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
