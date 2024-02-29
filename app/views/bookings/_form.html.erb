@@ -1,12 +1,23 @@
 <div class="form-wrapper mb-5">
-  <%= simple_form_for([@car, @booking]) do |f| %>
-      <%= f.input :date_begin,
-                  as: :string,
-                  input_html: { id: "range_start", data: {  datepicker_target:"input1" } } %>
+  <%= simple_form_for([@car, @booking], html: {
+        data: {
+          controller: "alerts",
+          alert_icon_value: "warning",
+          alert_title_value: "Are your sure?",
+          alert_html_value: "Create new post.",
+          confirm_button_text: "All good!",
+          show_cancel_button: true,
+          cancel_button_text: "Cancel",
+          action: "submit->alerts#initSweetalert",
+          turbo: false
+        } }) do |f| %>
+    <%= f.input :date_begin,
+                as: :string,
+                input_html: { id: "range_start", data: {  datepicker_target:"input1" } } %>
 
-      <%= f.input :date_end,
-                  as: :string,
-                  input_html: { id: "range_end", data: {  datepicker_target:"input2", action: "change->datepicker#dynamicPrice" } } %>
+    <%= f.input :date_end,
+                as: :string,
+                input_html: { id: "range_end", data: {  datepicker_target:"input2", action: "change->datepicker#dynamicPrice" } } %>
 
     <%= f.input :message,
                 as: :text,
@@ -15,6 +26,7 @@
     <p><strong>Booking for: <span id="total-nights" data-datepicker-target="span2">0</span></strong> day(s)</p>
     <p><strong>Total Price:</strong> <span id="total-price"  data-datepicker-target="span3"></span>€</p>
     <div class="d-flex justify-content-center align-items-center mt-5">
-      <%= f.submit %>
-       <% end %>
+      <%= f.submit "Save" %>
     </div>
+  <% end %>
+</div>
