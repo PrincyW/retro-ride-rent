@@ -4,13 +4,13 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :destroy]
 
   def index
-    @cars = Car.all
-    @markers = @cars.geocoded.map do |car|
+    @cars = Car.geocoded
+    @markers = @cars.map do |car|
       {
         lat: car.latitude,
         lng: car.longitude,
-        # infoWindow: render_to_string(partial: "info_window", locals: { car: car }),
-        image_url: helpers.asset_url('https://res.cloudinary.com/dv6j3n8zg/image/upload/v1617193317/Car%20Rental%20App/car-marker-2.png')
+        info_window_html: render_to_string(partial: "info_window", locals: {car: car}),
+        marker_html: render_to_string(partial: "marker", locals: {car: car})
       }
     end
   end
