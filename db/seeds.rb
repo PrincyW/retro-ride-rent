@@ -49,6 +49,7 @@ Booking.create!(
   date_begin: Date.today + 2,
   date_end: Date.today + 4,
   message: "I want to get married with this car",
+  status: "pending",
   car: princy.cars.first, # Replace with the actual car_id
   user: vicky
 )
@@ -57,6 +58,7 @@ Booking.create!(
   date_begin: Date.today + 6,
   date_end: Date.today + 8,
   message: "I want to get married with this car",
+  status: "pending",
   car: els.cars.first, # Replace with the actual car_id
   user: vicky
 )
