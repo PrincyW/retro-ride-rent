@@ -4,14 +4,21 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :destroy]
 
   def index
-    @cars = Car.geocoded
-    @markers = @cars.map do |car|
+
+    @cars = Car.all
+    if params[:query].present?
+      @cars = @cars.where("city ILIKE ?", "%#{params[:query]}%")
+    end
+
+
+    @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
         lng: car.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {car: car}),
         marker_html: render_to_string(partial: "marker", locals: {car: car})
       }
+
     end
   end
 

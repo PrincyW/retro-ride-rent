@@ -19,18 +19,48 @@
   <body>
 
   <%# <div class="footer-height"> %>
-    <%= render "shared/navbar" %>
 
-      <main>
+  <% if current_page?(cars_path)%>
+
+
+
+      <%= render "shared/navbar" %>
         <%= yield %>
-      </main>
 
-  <%# </div> %>
+    <%# </div> %>
 
-    <%= render "shared/flashes" %>
-    <%= render "shared/footer" %>
+      <%= render "shared/flashes" %>
+      <%= render "shared/footer" %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+
+    <%# MESSAGE POUR PY, SITUATION D URGENCE IMPLIQUE METHODE D URGENCE, SIMON %>
+  <% else %>
+    <div class="testing">
+
+
+
+      <%= render "shared/navbar" %>
+
+        <main>
+          <%= yield %>
+        </main>
+
+    <%# </div> %>
+
+      <%= render "shared/flashes" %>
+      <%= render "shared/footer" %>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
+
+
+  <% end %>
+
+
   </body>
 </html>
