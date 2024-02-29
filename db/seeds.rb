@@ -30,6 +30,7 @@ puts "Creation of bookings..."
 Booking.create!(
   date_begin: Date.today + 1,
   date_end: Date.today + 3,
+  message: "How many kilometers ?",
   status: "confirmed",
   car: princy.cars.first, # Replace with the actual car_id
   user: els
@@ -38,6 +39,7 @@ Booking.create!(
 Booking.create!(
   date_begin: Date.today + 5,
   date_end: Date.today + 7,
+  message: "How many kilometers ?",
   status: "pending",
   car: vicky.cars.first, # Replace with the actual car_id
   user: els
@@ -46,7 +48,7 @@ Booking.create!(
 Booking.create!(
   date_begin: Date.today + 2,
   date_end: Date.today + 4,
-  status: "confirmed",
+  message: "I want to get married with this car",
   car: princy.cars.first, # Replace with the actual car_id
   user: vicky
 )
@@ -54,7 +56,7 @@ Booking.create!(
 Booking.create!(
   date_begin: Date.today + 6,
   date_end: Date.today + 8,
-  status: "pending",
+  message: "I want to get married with this car",
   car: els.cars.first, # Replace with the actual car_id
   user: vicky
 )
@@ -62,6 +64,7 @@ Booking.create!(
 Booking.create!(
   date_begin: Date.today + 3,
   date_end: Date.today + 5,
+  message: "Please, please, please !",
   status: "confirmed",
   car: els.cars.first, # Replace with the actual car_id
   user: princy
@@ -70,6 +73,7 @@ Booking.create!(
 Booking.create!(
   date_begin: Date.today + 7,
   date_end: Date.today + 9,
+  message: "Please, please, please !",
   status: "pending",
   car: vicky.cars.first, # Replace with the actual car_id
   user: princy

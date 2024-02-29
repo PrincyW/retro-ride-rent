@@ -21,48 +21,77 @@
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h2>My Cars</h2>
-    <% if current_user.cars.any? %>
-      <ul>
-        <% current_user.cars.each do |car| %>
-          <div class="card my-3", style="width: 20rem;">
-            <%= image_tag car.photo_url, class: 'card-img-top', id: "dashboard-car-img", alt: 'Car Image' %>
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= car.brand %></strong></h5>
-              <p class="card-text"><%= car.description %></p>
-              <p class="card-text"><%= car.city %></p>
-              <p class="card-text"><%= car.price %> €</p>
-            </div>
-          </div>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>You don't have any cars yet.</p>
-    <% end %>
-  </div>
 
-  <div class="col-md-6">
-    <h2>Your Booked Cars</h2>
-    <% if current_user.bookings.any? %>
-      <ul>
-        <% current_user.bookings.each do |booking| %>
-          <div class="card my-3", style="width: 20rem;">
-            <%= image_tag booking.car.photo_url, alt: 'Booked Car Image' %>
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= booking.car.brand %></strong></h5>
-              <p class="card-text"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
-              <p class="card-text"><strong>Status:<%= "booking.status (quand on aura défini)" %></strong></p>
-            </div>
+
+
+<h2>My Cars</h2>
+<% if current_user.cars.any? %>
+  <div class="row mx-2">
+    <% current_user.cars.each do |car| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <%= image_tag car.photo_url, class: 'card-img-top', id: 'dashboard-car-img', alt: 'Car Image' %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= car.brand %></strong></h5>
+            <p class="card-text text-truncate"><%= car.price %> €</p>
+            <%= link_to "More details", car_path(car), class: "btn btn-info btn-sm car-info-btn" %>
           </div>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>You haven't booked any cars yet.</p>
+        </div>
+      </div>
+    <% end %>
+
+    <% # Add empty cards if there are fewer than 3 cars %>
+    <% (3 - current_user.cars.count).times do %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <!-- Add content for empty cards if needed -->
+          <div class="card-body">
+            <p class="card-text text-truncate">No Car</p>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-</div>
+<% else %>
+  <p>You don't have any cars yet.</p>
+<% end %>
+
+<hr/>
+
+<h2>Your Booked Cars</h2>
+<% if current_user.bookings.any? %>
+  <div class="row mx-2">
+    <% current_user.bookings.each do |booking| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <%= image_tag booking.car.photo_url, class: 'card-img-top', alt: 'Booked Car Image' %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= booking.car.brand %></strong></h5>
+            <p class="card-text text-truncate"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
+            <p class="card-text text-truncate"><strong>Message:</strong> <%= booking.message %></p>
+            <p class="card-text text-truncate"><strong>Status:</strong> <%= booking.status %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% # Add empty cards if there are fewer than 3 bookings %>
+    <% (3 - current_user.bookings.count).times do %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <!-- Add content for empty cards if needed -->
+          <div class="card-body">
+            <p class="card-text text-truncate">No Booking</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You haven't booked any cars yet.</p>
+<% end %>
+
+
 
 <%# End of Modals %>
 
