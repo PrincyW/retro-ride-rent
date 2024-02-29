@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   before_action :setting_car, only: [:new, :create]
+  # before_validation :set_default_status, on: :create
 
   def new
     @booking = Booking.new
@@ -10,8 +11,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.car = @car
-    @booking.save
-    redirect_to cars_path
+    @booking.status = "pending"
+    if @booking.save
+       redirect_to cars_path
+    else render:new
+    end
   end
 
   def destroy
