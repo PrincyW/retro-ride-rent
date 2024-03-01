@@ -1,26 +1,4 @@
 <h1>Welcome to Your Dashboard, <%= current_user.username.capitalize %></h1>
-<button type="button" class="car-info-btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Add a car
-</button>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Your car informations</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= render 'cars/new', car: @car %>
-      </div>
-    </div>
-  </div>
-</div>
-<%# End of Modal %>
-
 
 <a href="#my-cars" class="car-info-btn-small">My cars</a>
 <a href="#my-bookings" class="car-info-btn-small">My bookings</a>
@@ -72,7 +50,7 @@
                 <i class="fa-solid fa-trash"></i>
               <% end %>
             </div>
-            <% if car.bookings.any? %>
+            <% if car.bookings.where(status: ["pending", "confirmed"]).any? %>
               <div class="position-absolute bottom-0 end-0">
                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#toto">
                   Booking requests
@@ -97,7 +75,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <% car.bookings.each do |booking| %>
+                  <% car.bookings.where(status: ["pending", "confirmed"]).each do |booking| %>
                     <div class="card mb-3">
                       <div class="row g-0">
                         <!-- Left part with user avatar -->
@@ -111,8 +89,8 @@
                             <p class="card-text"><strong>Message:</strong> <%= booking.message %></p>
                             <p class="card-text"><strong>Status:</strong> <%= booking.status %></p>
                             <div class="btn-group" role="group" aria-label="Booking Actions">
-                              <button type="button" class="btn btn-danger" data-action="decline" data-booking-id="<%= booking.id %>">Decline</button>
-                              <button type="button" class="btn btn-success" data-action="accept" data-booking-id="<%= booking.id %>">Accept</button>
+                              <%= link_to  "Decline", decline_booking_path(booking), class: "btn btn-success", data: {turbo_method: :patch} %>
+                              <%= link_to  "Accept", accept_booking_path(booking), class: "btn btn-success", data: {turbo_method: :patch} %>
                             </div>
                           </div>
                         </div>
@@ -160,7 +138,7 @@
               <p class="card-text text-truncate"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
               <p class="card-text text-truncate"><strong>Message:</strong> <%= booking.message %></p>
               <p class="card-text text-truncate"><strong>Status:</strong> <%= booking.status %></p>
-              <%= link_to "Cancel", dashboard_path, class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <%= link_to "Cancel", booking_path(booking), class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </div>
           </div>
         </div>
@@ -183,21 +161,4 @@
   <% end %>
 </section>
 
-
-
-
-
-
 <%# **************************** %>
-
-
-
-
-
-
-<!-- Modal -->
-
-
-<%# Modals %>
-
-<!-- Modal -->

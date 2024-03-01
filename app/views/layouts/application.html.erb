@@ -18,17 +18,12 @@
   </head>
 
   <body>
+    <%# <div class="footer-height"> %>
 
-  <%# <div class="footer-height"> %>
-
-  <% if current_page?(cars_path)%>
-
-
-
+    <% if current_page?(cars_path)%>
       <%= render "shared/navbar" %>
         <%= yield %>
-
-    <%# </div> %>
+      <%# </div> %>
 
       <%= render "shared/flashes" %>
       <%= render "shared/footer" %>
@@ -38,30 +33,36 @@
 
 
     <%# MESSAGE POUR PY, SITUATION D URGENCE IMPLIQUE METHODE D URGENCE, SIMON %>
-  <% else %>
-    <div class="testing">
-
-
-
-      <%= render "shared/navbar" %>
-
+    <% else %>
+      <div class="testing">
+        <%= render "shared/navbar" %>
         <main>
           <%= yield %>
         </main>
-
     <%# </div> %>
+        <%= render "shared/flashes" %>
+        <%= render "shared/footer" %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
 
-      <%= render "shared/flashes" %>
-      <%= render "shared/footer" %>
+    <% end %>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <!-- Modal to add a new car -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Your car informations</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% @car = Car.new  %>
+            <%= render 'cars/new', car: @car %>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-  <% end %>
-
-
+    <%# End of Modal %>
   </body>
 </html>
