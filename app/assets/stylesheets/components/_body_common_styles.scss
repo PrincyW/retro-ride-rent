@@ -32,6 +32,16 @@ body {
   position: relative;
 }
 
+.testing-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #eeedeb;
+  // padding-top: 30px;
+  position: relative;
+}
+
 // min-height: calc(100vh - 186px); - Previously applied to body
 
 main {
@@ -43,4 +53,12 @@ main {
   align-items: center;
   text-align: center;
   margin: 6rem 0;
+}
+
+
+@media(max-width: 720px) {
+
+ html, body {
+  overflow-x: hidden;
+ }
 }
