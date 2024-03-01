@@ -32,7 +32,9 @@
       <% current_user.cars.each do |car| %>
         <div class="col-md-4 mb-4">
           <div class="card h-100 position-relative">
-            <%= image_tag car.photo_url, class: 'card-img-top', id: 'dashboard-car-img', alt: 'Car Image' %>
+          <% if car.photo.attached? %>
+            <%= cl_image_tag car.photo.key, class: 'card-img-top', id: 'dashboard-car-img', alt: 'Car Image' %>
+            <% end %>
             <div class="card-body">
               <h5 class="card-title"><strong><%= car.brand %></strong></h5>
               <p class="card-text text-truncate"><%= car.price %> €</p>
