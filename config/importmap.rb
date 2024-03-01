@@ -12,3 +12,4 @@ pin "flatpickrRangePlugin", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/es
 pin "mapbox-gl" # @3.1.2
 pin "process" # @2.0.1
 
+pin "sweetalert2", to: "sweetalert2.js" # @11.10.5
