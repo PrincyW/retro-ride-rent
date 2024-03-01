@@ -3,8 +3,9 @@ class Car < ApplicationRecord
   belongs_to :user
   has_many :users, through: :bookings
   has_many :bookings, dependent: :destroy
+  has_one_attached :photo
   validates :brand, presence: true
-  validates :photo_url, presence: true
+  # validates :photo_url, presence: true
   validates :price, presence: true
   validates :city, inclusion: CITIES
 

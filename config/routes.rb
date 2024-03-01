@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :cars do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:destroy]
+  resources :bookings, only: [:destroy] do
+    patch 'accept', to: 'bookings#accept', on: :member, as: :accept
+    patch 'decline', to: 'bookings#decline', on: :member, as: :decline
+  end
   get "dashboard", to: "dashboards#dashboard"
 end
