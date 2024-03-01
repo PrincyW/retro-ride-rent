@@ -7,7 +7,7 @@
   border-radius: 0.8rem;
   border: 1px solid $dark_turqoise;
   background-color: transparent;
-  animation: anim 1s 1s backwards;
+  animation: anim 1s backwards;
   opacity: 0.9;
   text-decoration: none;
   text-decoration: none;
@@ -16,12 +16,12 @@
   margin-right: 2rem;
 }
 
-.link:hover, .car-info-btn:hover {
+.link:hover, .car-info-btn:hover, .car-info-btn-small:hover {
   background: linear-gradient(to left, $light_turquoise, $dark_turqoise);
   color: #fff;
 }
 
-.link:active, .car-info-btn:active {
+.link:active, .car-info-btn:active, .car-info-btn-small:active {
   transform: translateY(0.2rem);
 }
 
@@ -52,7 +52,21 @@
   border-radius: 0.8rem;
   border: 1px solid $dark_turqoise;
   background-color: transparent;
-  // animation: anim 1s 1s backwards;
+  animation: anim 1s backwards;
+  opacity: 0.9;
+  text-decoration: none;
+  color: $dark_turqoise;
+}
+
+.car-info-btn-small{
+  font-family: "Open Sans", sans-serif;
+  width: 10%;
+  padding: 0.5rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  border: 1px solid $dark_turqoise;
+  background-color: transparent;
+  animation: anim 1s backwards;
   opacity: 0.9;
   text-decoration: none;
   color: $dark_turqoise;

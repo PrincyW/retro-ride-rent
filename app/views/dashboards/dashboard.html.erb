@@ -1,10 +1,9 @@
 <h1>Welcome to Your Dashboard, <%= current_user.username.capitalize %></h1>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="car-info-btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add a car
 </button>
 
 
-<%# Modals %>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -20,83 +19,169 @@
     </div>
   </div>
 </div>
+<%# End of Modal %>
 
 
+<a href="#my-cars" class="car-info-btn-small">My cars</a>
+<a href="#my-bookings" class="car-info-btn-small">My bookings</a>
 
-
-<h2>My Cars</h2>
-<% if current_user.cars.any? %>
-  <div class="row mx-2">
-    <% current_user.cars.each do |car| %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <%= image_tag car.photo_url, class: 'card-img-top', id: 'dashboard-car-img', alt: 'Car Image' %>
-          <div class="card-body">
-            <h5 class="card-title"><strong><%= car.brand %></strong></h5>
-            <p class="card-text text-truncate"><%= car.price %> €</p>
-            <%= link_to "More details", car_path(car), class: "btn btn-info btn-sm car-info-btn" %>
+<section class="section-1" id="my-cars">
+  <h2>My Cars</h2>
+  <% if current_user.cars.any? %>
+    <div class="row mx-2">
+      <% current_user.cars.each do |car| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 position-relative">
+            <%= image_tag car.photo_url, class: 'card-img-top', id: 'dashboard-car-img', alt: 'Car Image' %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= car.brand %></strong></h5>
+              <p class="card-text text-truncate"><%= car.price %> €</p>
+              <%#= link_to "More details", car_path(car), class: "btn btn-info btn-sm car-info-btn" %>
+              <button type="button" class="car-info-btn" data-bs-toggle="modal" data-bs-target="#show-details-<%= car.id %>">
+                More details
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="show-details-<%= car.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Your car informations</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="car-wrapper col-6">
+                          <div class="image-container">
+                              <img src=" <%= car.photo_url %> " class="card-img-top" alt="...">
+                          </div>
+                          <div class="content-container">
+                            <h5 class="mt-2"><%= car.brand %></h5>
+                            <strong>Description: </strong>
+                            <p><%= car.description %></p>
+                            <p><strong>City:</strong> <%= car.city %></p>
+                            <p><strong>Price:</strong> €<%= car.price.round %> per day</p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End of the Modal -->
+            </div>
+            <div class="position-absolute bottom-0 start-0">
+              <%= link_to car_path(car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </div>
+            <% if car.bookings.any? %>
+              <div class="position-absolute bottom-0 end-0">
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#toto">
+                  Booking requests
+                </button>
+              </div>
+            <% else %>
+              <div class="position-absolute bottom-0 end-0">
+                No Booking Request
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
-    <% end %>
 
-    <% # Add empty cards if there are fewer than 3 cars %>
-    <% (3 - current_user.cars.count).times do %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <!-- Add content for empty cards if needed -->
-          <div class="card-body">
-            <p class="card-text text-truncate">No Car</p>
+
+        <% if car.bookings.any? %>
+          <!-- Modal -->
+          <div class="modal fade" id="toto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="totoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="totoLabel">Booking requests on this car</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <% car.bookings.each do |booking| %>
+                    <div class="card mb-3">
+                      <div class="row g-0">
+                        <!-- Left part with user avatar -->
+                        <div class="col-md-3">
+                          <img src="<%= booking.user.avatar_url %>" class="img-fluid rounded-start" alt="User Avatar">
+                        </div>
+                        <!-- Right part with booking details -->
+                        <div class="col-md-9">
+                          <div class="card-body">
+                            <p class="card-text"><strong>Date:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
+                            <p class="card-text"><strong>Message:</strong> <%= booking.message %></p>
+                            <p class="card-text"><strong>Status:</strong> <%= booking.status %></p>
+                            <div class="btn-group" role="group" aria-label="Booking Actions">
+                              <button type="button" class="btn btn-danger" data-action="decline" data-booking-id="<%= booking.id %>">Decline</button>
+                              <button type="button" class="btn btn-success" data-action="accept" data-booking-id="<%= booking.id %>">Accept</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of the Modal -->
+        <% end %>
+
+      <% end %>
+
+      <% # Add empty cards if there are fewer than 3 cars %>
+      <% (3 - current_user.cars.count).times do %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- Add content for empty cards if needed -->
+            <div class="card-body">
+              <i class="fa-solid fa-car"></i>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>You don't have any cars yet.</p>
-<% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>You don't have any cars yet.</p>
+  <% end %>
 
-<hr/>
+</section>
 
-<h2>Your Booked Cars</h2>
-<% if current_user.bookings.any? %>
-  <div class="row mx-2">
-    <% current_user.bookings.each do |booking| %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <%= image_tag booking.car.photo_url, class: 'card-img-top', alt: 'Booked Car Image' %>
-          <div class="card-body">
-            <h5 class="card-title"><strong><%= booking.car.brand %></strong></h5>
-            <p class="card-text text-truncate"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
-            <p class="card-text text-truncate"><strong>Message:</strong> <%= booking.message %></p>
-            <p class="card-text text-truncate"><strong>Status:</strong> <%= booking.status %></p>
+
+<section class="section-2" id="my-bookings">
+  <h2>My Bookings</h2>
+  <% if current_user.bookings.any? %>
+    <div class="row mx-2">
+      <% current_user.bookings.each do |booking| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <%= image_tag booking.car.photo_url, class: 'card-img-top', alt: 'Booked Car Image' %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= booking.car.brand %></strong></h5>
+              <p class="card-text text-truncate"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
+              <p class="card-text text-truncate"><strong>Message:</strong> <%= booking.message %></p>
+              <p class="card-text text-truncate"><strong>Status:</strong> <%= booking.status %></p>
+              <%= link_to "Cancel", dashboard_path, class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
 
-    <% # Add empty cards if there are fewer than 3 bookings %>
-    <% (3 - current_user.bookings.count).times do %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <!-- Add content for empty cards if needed -->
-          <div class="card-body">
-            <p class="card-text text-truncate">No Booking</p>
+      <% # Add empty cards if there are fewer than 3 bookings %>
+      <% (3 - current_user.bookings.count).times do %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- Add content for empty cards if needed -->
+            <div class="card-body">
+              <i class="fa-solid fa-bookmark"></i>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>You haven't booked any cars yet.</p>
-<% end %>
-
-
-
-<%# End of Modals %>
-
-
-
+      <% end %>
+    </div>
+  <% else %>
+    <p>You haven't booked any cars yet.</p>
+  <% end %>
+</section>
 
 
 
@@ -104,3 +189,15 @@
 
 
 <%# **************************** %>
+
+
+
+
+
+
+<!-- Modal -->
+
+
+<%# Modals %>
+
+<!-- Modal -->
