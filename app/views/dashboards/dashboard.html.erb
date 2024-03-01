@@ -31,7 +31,7 @@
                     <div class="modal-body">
                       <div class="car-wrapper col-6">
                           <div class="image-container">
-                              <img src=" <%= car.photo_url %> " class="card-img-top" alt="...">
+                            <%= cl_image_tag car.photo.key, class: "card-img-top", alt:"..." %>
                           </div>
                           <div class="content-container">
                             <h5 class="mt-2"><%= car.brand %></h5>
@@ -91,7 +91,7 @@
                             <p class="card-text"><strong>Message:</strong> <%= booking.message %></p>
                             <p class="card-text"><strong>Status:</strong> <%= booking.status %></p>
                             <div class="btn-group" role="group" aria-label="Booking Actions">
-                              <%= link_to  "Decline", decline_booking_path(booking), class: "btn btn-success", data: {turbo_method: :patch} %>
+                              <%= link_to  "Decline", decline_booking_path(booking), class: "btn btn-danger", data: {turbo_method: :patch} %>
                               <%= link_to  "Accept", accept_booking_path(booking), class: "btn btn-success", data: {turbo_method: :patch} %>
                             </div>
                           </div>
@@ -134,7 +134,8 @@
       <% current_user.bookings.each do |booking| %>
         <div class="col-md-4 mb-4">
           <div class="card h-100">
-            <%= image_tag booking.car.photo_url, class: 'card-img-top', alt: 'Booked Car Image' %>
+            <%= cl_image_tag booking.car.photo.key, class: "card-img-top", alt:"Booked Car Image" %>
+            <%#= image_tag booking.car.photo_url, class: 'card-img-top', alt: 'Booked Car Image' %>
             <div class="card-body">
               <h5 class="card-title"><strong><%= booking.car.brand %></strong></h5>
               <p class="card-text text-truncate"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>

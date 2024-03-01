@@ -26,7 +26,7 @@ car = Car.create!(brand: "Mercedes ASL 300", description: "The Mercedes-Benz 300
 car.photo.attach(io: file, filename: "mercedesASL300.png", content_type: "image/png")
 car.save
 
-file = URI.open("https://images.unsplash.com/photo-1474015977340-64a93f54a9f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+file = URI.open("https://auto.cdn-rivamedia.com/photos/annonce/big/jaguar-xk120-xk-120-roadster-135360105.jpg")
 car = Car.create!(brand: "Jaguar XK 120", description: "The Jaguar XK120 is a sports car manufactured by Jaguar between 1948 and 1954. It was Jaguar's first sports car since SS 100 production ended in 1939. ", photo_url: "https://auto.cdn-rivamedia.com/photos/annonce/big/jaguar-xk120-xk-120-roadster-135360105.jpg", city: "Lille", price: 250, user: vicky )
 car.photo.attach(io: file, filename: "mercedesASL300.png", content_type: "image/png")
 car.save
