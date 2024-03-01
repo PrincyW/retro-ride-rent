@@ -1,7 +1,9 @@
 <h1>Welcome to Your Dashboard, <%= current_user.username.capitalize %></h1>
+<div class="container d-flex justify-content-center my-5">
+  <a href="#my-cars" class="car-info-btn-small d-block me-5">My cars</a>
+  <a href="#my-bookings" class="car-info-btn-small d-block ms-5">My bookings</a>
+</div>
 
-<a href="#my-cars" class="car-info-btn-small">My cars</a>
-<a href="#my-bookings" class="car-info-btn-small">My bookings</a>
 
 <section class="section-1" id="my-cars">
   <h2>My Cars</h2>
@@ -49,12 +51,12 @@
             </div>
             <div class="position-absolute bottom-0 start-0">
               <%= link_to car_path(car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-                <i class="fa-solid fa-trash"></i>
+                <i class="fa-solid fa-trash d-block ms-3 mb-3"></i>
               <% end %>
             </div>
             <% if car.bookings.where(status: ["pending", "confirmed"]).any? %>
-              <div class="position-absolute bottom-0 end-0">
-               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#toto">
+              <div class="position-absolute bottom-5 end-5">
+               <button type="button" class="btn btn-warning rounded-5 d-block me-3 mb-3" data-bs-toggle="modal" data-bs-target="#toto">
                   Booking requests
                 </button>
               </div>
@@ -141,7 +143,7 @@
               <p class="card-text text-truncate"><strong>Booking Dates:</strong> <%= booking.date_begin %> to <%= booking.date_end %></p>
               <p class="card-text text-truncate"><strong>Message:</strong> <%= booking.message %></p>
               <p class="card-text text-truncate"><strong>Status:</strong> <%= booking.status %></p>
-              <%= link_to "Cancel", booking_path(booking), class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <%= link_to "Cancel", booking_path(booking), class: "btn btn-outline-danger rounded-5", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </div>
           </div>
         </div>
