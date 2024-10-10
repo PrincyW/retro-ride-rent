@@ -1,13 +1,15 @@
 .homepage-container {
   display: flex;
+  padding: 0rem;
   margin: 0 3rem;
-  position: relative;
+  // position: relative;
 }
 
 .heading {
   flex: 0 1 50%;
   width: 50%;
   padding: 2rem;
+  margin-top: 0rem;
   margin-left: 2rem;
 }
 
